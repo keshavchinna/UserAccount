@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:id="@+id/firstName"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:id="@+id/lastName"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email-Id"
+            android:id="@+id/email" android:inputType="textEmailAddress"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:id="@+id/mobileNumber" android:inputType="number"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:id="@+id/password" android:password="true"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="confirm Password"
+            android:id="@+id/confirmPassword" android:password="true"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Security Question"
+            android:id="@+id/securityQuestion"/>
+    <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/hello"
+            android:prompt="@string/answer"
+            android:entries="@array/question_answers"
+            android:id="@+id/chooseAnswer"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:onClick="singnUp"
+            android:id="@+id/signUp"/>
+
+</LinearLayout>

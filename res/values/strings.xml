@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UserAccount</string>
+    <string name="sign_in">SignIn</string>
+    <string name="sign_up">SignUp</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_id">Email-id</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="submit">Submit</string>
+    <string name="hello">Login Successful</string>
+    <string name="answer">Choose Answer</string>
+    <string name="continueButton">continue</string>
+    <string name="email">Emails</string>
+    <string name="contacts">Contacts</string>
+    <string name="messages">Messages</string>
+    <string-array name="question_answers">
+        <item>India</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>Pakistan</item>
+    </string-array>
+
+</resources>
