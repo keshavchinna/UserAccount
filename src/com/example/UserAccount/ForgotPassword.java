@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.gson.Gson;
 
 /**
  * Created with IntelliJ IDEA.
- * User: ehc
+ * UserDetails: ehc
  * Date: 16/6/14
  * Time: 1:06 PM
  * To change this template use File | Settings | File Templates.
@@ -20,50 +21,37 @@ import android.widget.TextView;
 public class ForgotPassword extends Activity {
 
     SharedPreferences preference;
-    String mobile,question,answer,password;
+    String mobile, question, answer, password,json,emailID;
     public final String myPreference = "Myprefer";
+    UserDetails userDetails;
+    EditText email;
+    TextView mobileErrorMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
         setContentView(R.layout.fortgot_password);
-        Button continueButton=(Button)findViewById(R.id.continueButton);
-        final EditText mobileNumber=(EditText)findViewById(R.id.mobileNumber);
-        final TextView mobileErrorMessage=(TextView)findViewById(R.id.mobileErrorMessage);
+        Button continueButton = (Button) findViewById(R.id.continueButton);
+        email = (EditText) findViewById(R.id.emailID);
+        mobileErrorMessage = (TextView) findViewById(R.id.emailErrorMessage);
         preference = getSharedPreferences(myPreference, MODE_PRIVATE);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-              if(preference.contains("mobileKey")){
-                 mobile=preference.getString("mobileKey","");
-              }
-                if(preference.contains("questionKey"))
-                {
-                  question=preference.getString("questionKey","");
+                emailID=email.getText().toString();
+                Gson gson = new Gson();
+                if (preference.contains(emailID)) {
+                    Log.d("Test", "inside checking email");
+                    json = preference.getString(emailID, "");
+                    userDetails = gson.fromJson(json, UserDetails.class);
+                    Intent intent = new Intent(ForgotPassword.this, CheckSecurityQuestion.class);
+                    intent.putExtra("mobile", userDetails.getPhoneNumber());
+                    intent.putExtra("question", userDetails.getQuestion());
+                    intent.putExtra("answer", userDetails.getAnswer());
+                    intent.putExtra("password",userDetails.getPassword());
+                    startActivity(intent);
+                }else{
+                    mobileErrorMessage.setText("With this emailID No Account Exist");
                 }
-                if(preference.contains("questionKey"))
-                {
-                    question=preference.getString("questionKey","");
-                }
-                if(preference.contains("answerKey"))
-                {
-                    answer=preference.getString("answerKey","");
-                }
-                if(preference.contains("passwordKey"))
-                {
-                    password=preference.getString("passwordKey","");
-                }
-                Log.d("Test", "in ForgotPassword: "+answer);
-                if(mobileNumber.getText().toString().equals(mobile)){
-                   Intent intent=new Intent(ForgotPassword.this,CheckSecurityQuestion.class);
-                   intent.putExtra("mobile",mobile);
-                   intent.putExtra("question",question);
-                    intent.putExtra("answer",answer);
-                    intent.putExtra("password",password);
-                   startActivity(intent);
-                }
-                else
-                    mobileErrorMessage.setText("With this Mobile Number No Account Exist");
             }
         });
     }

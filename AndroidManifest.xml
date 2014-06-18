@@ -7,8 +7,9 @@
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
-    <application android:label="@string/app_name" android:icon="@drawable/person" android:debuggable="true">
+    <application android:allowBackup="true" android:label="@string/app_name" android:icon="@drawable/person" android:debuggable="true" >
 
 
         <activity android:name=".SignInActivity"
@@ -19,15 +20,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity"
-                  android:label="@string/sign_up"></activity>
+                  android:label="@string/sign_up"/>
         <activity android:name=".Dashboard"
-                  android:label="@string/app_name"></activity>
+                  android:label="@string/app_name"/>
         <activity android:name=".ForgotPassword"
-                  android:label="@string/app_name"></activity>
+                  android:label="@string/app_name"/>
         <activity android:name=".CheckSecurityQuestion"
-                  android:label="@string/app_name"></activity>
+                  android:label="@string/app_name"/>
         <activity android:name=".ShowDetails"
-                  android:label="@string/app_name"></activity>
+                  android:label="@string/app_name"/>
 
 
     </application>

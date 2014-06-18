@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.gson.Gson;
 
 /**
  * Created with IntelliJ IDEA.
- * User: ehc
+ * UserDetails: ehc
  * Date: 16/6/14
  * Time: 11:21 AM
  * To change this template use File | Settings | File Templates.
@@ -24,12 +26,14 @@ public class SignInActivity extends Activity {
     EditText userName, password;
     TextView errorMessage;
     Button signIn, signUp;
-    String emailId, userPassword;
+    String email, pwd, json;
+    UserDetails userDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
         setContentView(R.layout.sign_in);
+
         userName = (EditText) findViewById(R.id.user);
         password = (EditText) findViewById(R.id.password);
         errorMessage = (TextView) findViewById(R.id.errorMessage);
@@ -40,25 +44,29 @@ public class SignInActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                String email = userName.getText().toString();
-                String pwd = password.getText().toString();
-                if (preference.contains("emailKey")) {
-                    emailId = preference.getString("emailKey", "");
-                }
-                if (preference.contains("passwordKey")) {
-                    userPassword = preference.getString("passwordKey", "");
-                }
-                if (email.equals(emailId) && pwd.equals(userPassword)) {
-                    Intent intent = new Intent(SignInActivity.this, Dashboard.class);
-                    startActivity(intent);
+                email = userName.getText().toString();
+                pwd = password.getText().toString();
+                Gson gson = new Gson();
+                if (preference.contains(email)) {
+                    Log.d("Test", "inside checking email");
+                    json = preference.getString(email, "");
+                    userDetails = gson.fromJson(json, UserDetails.class);
+                    if (email.equals(userDetails.getEmail()) && pwd.equals(userDetails.getPassword())) {
+                        Intent intent = new Intent(SignInActivity.this, Dashboard.class);
+                        startActivity(intent);
+                    } else {
+                        errorMessage.setText("Login failed check username/password");
+                    }
                 } else {
-                    errorMessage.setText("Login failed check username/password");
+                    Log.d("Test", "inside checking email else condition");
+                    errorMessage.setText("Invalid Email Address,No Account Exist");
                 }
             }
+
+
         });
 
-
-    }
+    };
 
     public void signUp(View v) {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
