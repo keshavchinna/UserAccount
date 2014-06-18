@@ -42,7 +42,7 @@
     <file path="$PROJECT_DIR$/gen/com/example/UserAccount/BuildConfig.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1403007041131" ignored="false" />
     <file path="/dashboard.xml" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1402915330888" ignored="false" />
     <file path="/Dashboard.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1402923520121" ignored="false" />
-    <file path="/fragment.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1403073075532" ignored="false" />
+    <file path="/fragment.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1403075090009" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/example/UserAccount/Manifest.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1402945388427" ignored="false" />
     <file path="/a.dummy" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1402903584125" ignored="false" />
     <file path="/ForgotPassword.java" changelist="16bbd3c0-d2c1-4b9a-a381-64cf660f0c14" time="1403028701360" ignored="false" />
@@ -115,7 +115,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sign_up.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sign_up.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/sign_up.xml">
           <provider editor-type-id="text-editor">
             <state line="48" column="41" selection-start="2000" selection-end="2012" vertical-scroll-proportion="0.0">
@@ -157,10 +157,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShowDetails.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ShowDetails.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/UserAccount/ShowDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="98" selection-start="7007" selection-end="7007" vertical-scroll-proportion="3.0483272">
+            <state line="73" column="39" selection-start="2611" selection-end="2611" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3873#3881#0" expanded="true" />
@@ -536,8 +536,8 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="HDPI" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
@@ -607,7 +607,7 @@
     <frame x="0" y="24" width="1280" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32520324" sideWeight="0.6628571" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32520324" sideWeight="0.6628571" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -620,7 +620,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23577236" sideWeight="0.6628571" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33714285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32520324" sideWeight="0.6628571" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32520324" sideWeight="0.6628571" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -788,16 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/sign_up.xml">
-      <provider editor-type-id="text-editor">
-        <state line="48" column="41" selection-start="2000" selection-end="2012" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="47" selection-start="742" selection-end="742" vertical-scroll-proportion="-11.4">
@@ -827,13 +817,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/UserAccount/ShowDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="98" selection-start="7007" selection-end="7007" vertical-scroll-proportion="3.0483272">
+        <state line="73" column="39" selection-start="2611" selection-end="2611" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3873#3881#0" expanded="true" />
             <element signature="e#5807#5815#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/sign_up.xml">
+      <provider editor-type-id="text-editor">
+        <state line="48" column="41" selection-start="2000" selection-end="2012" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>
