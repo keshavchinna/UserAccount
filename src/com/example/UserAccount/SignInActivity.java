@@ -1,6 +1,7 @@
 package com.example.UserAccount;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,7 +23,11 @@ public class SignInActivity extends Activity {
 
 
     public final String myPreference = "Myprefer";
+    public static final String mylogin="LoginDetails";
+    public static final String name = "nameKey";
+    public static final String pass = "passwordKey";
     SharedPreferences preference;
+    SharedPreferences loginDetailsPreferences;
     EditText userName, password;
     TextView errorMessage;
     Button signIn, signUp;
@@ -40,6 +45,7 @@ public class SignInActivity extends Activity {
         signIn = (Button) findViewById(R.id.signIn);
         signUp = (Button) findViewById(R.id.signUp);
         preference = getSharedPreferences(myPreference, MODE_PRIVATE);
+        loginDetailsPreferences=getSharedPreferences(mylogin,MODE_PRIVATE);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +58,10 @@ public class SignInActivity extends Activity {
                     json = preference.getString(email, "");
                     userDetails = gson.fromJson(json, UserDetails.class);
                     if (email.equals(userDetails.getEmail()) && pwd.equals(userDetails.getPassword())) {
+                        SharedPreferences.Editor editor = loginDetailsPreferences.edit();
+                        editor.putString(name, email);
+                        editor.putString(pass, pwd);
+                        editor.commit();
                         Intent intent = new Intent(SignInActivity.this, Dashboard.class);
                         startActivity(intent);
                     } else {
@@ -66,7 +76,20 @@ public class SignInActivity extends Activity {
 
         });
 
-    };
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();    //To change body of overridden methods use File | Settings | File Templates.
+        loginDetailsPreferences=getSharedPreferences(mylogin, Context.MODE_PRIVATE);
+        if (loginDetailsPreferences.contains(name))
+        {
+            if(loginDetailsPreferences.contains(pass)){
+                Intent intent = new Intent(this,Dashboard.class);
+                startActivity(intent);
+            }
+        }
+    }
 
     public void signUp(View v) {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);

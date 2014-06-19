@@ -2,15 +2,15 @@ package com.example.UserAccount;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.*;
+import android.widget.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,14 +25,10 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 public class ShowDetails extends Activity {
-    String email;
-    String contacts;
-    String messages;
-    TextView outputText,textView;
+
+    TextView outputText;
     ListView lViewSMS ;
     ArrayList<String> contactList;
-    String[] details;
-    ArrayAdapter<String> adapter;
     StringBuffer contact;
     StringBuffer msgs;
     StringBuffer emails;
@@ -69,6 +65,15 @@ public class ShowDetails extends Activity {
             if(contacts.length>0){
                 ArrayAdapter adapter=new ArrayAdapter(this,R.layout.show_details,R.id.showDetails,contacts);
                 lViewSMS.setAdapter(adapter);
+                lViewSMS.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    Toast toast=Toast.makeText(getApplicationContext(), "Hello welcome", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL, 40, 30);
+                        toast.show();
+                     }
+                });
                 //outputText.setText(contact);
             }
             else
@@ -97,6 +102,40 @@ public class ShowDetails extends Activity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_actions, menu);
+        return super.onCreateOptionsMenu(menu);    //To change body of overridden methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_signout:
+                signOut();
+                return true;
+            case R.id.action_home:
+                exitToHome();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+    }
+
+    public void signOut(){
+        SharedPreferences sharedpreferences = getSharedPreferences
+                (SignInActivity.mylogin, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
+        moveTaskToBack(true);
+        ShowDetails.this.finish();
+    }
+    public void exitToHome(){
+        moveTaskToBack(true);
+        ShowDetails.this.finish();
+    }
     ArrayList<String> readContacts() {
 
         ArrayList<String> resultSet=new ArrayList<String>();
@@ -174,7 +213,7 @@ public class ShowDetails extends Activity {
     {
         String dateMilliSeconds =date;
         DateFormat formatter = new SimpleDateFormat("EEEE, MMM dd, yyyy HH:mm:ss a");
-        long milliSeconds= Long.parseLong(dateMilliSeconds);
+        long milliSeconds= Long.parseLong(date);
          Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSeconds);
         Log.d("Date","Date: "+formatter.format(calendar.getTime()));

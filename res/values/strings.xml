@@ -19,6 +19,10 @@
     <string name="contacts">Contacts</string>
     <string name="messages">Messages</string>
     <string name="welcome">Welcome</string>
+    <string name="logout">Logout</string>
+    <string name="exit">Exit without Logout</string>
+    <string name="action_signout">Signout</string>
+    <string name="action_home">Home</string>
     <string-array name="question_answers">
         <item>India</item>
         <item>United States</item>
@@ -29,5 +33,4 @@
         <item>New Zealand</item>
         <item>Pakistan</item>
     </string-array>
-
 </resources>
