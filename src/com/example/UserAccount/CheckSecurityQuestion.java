@@ -19,10 +19,10 @@ import android.widget.Toast;
  * To change this template use File | Settings | File Templates.
  */
 public class CheckSecurityQuestion extends Activity {
-    TextView showQuestion, questionErrorMessage;
-    EditText answer;
-    Button sendMessage;
-    String questionAnswer, phoneNumber, question;
+    private TextView showQuestion, questionErrorMessage;
+    private EditText answer;
+    private Button sendMessage;
+    private String questionAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

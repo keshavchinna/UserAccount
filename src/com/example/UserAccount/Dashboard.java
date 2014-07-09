@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 /**
@@ -22,20 +21,16 @@ import android.widget.ListView;
  */
 public class Dashboard extends ListActivity {
     static final String[] features =new String[] { "Emails", "Contacts", "Messages"};
-    Button emails;
-    Button contacts;
-    Button messages;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setListAdapter(new ImageListAdapter(this, features));
+        setListAdapter(new ImageListAdapter(this));
 
     }
 
-
-    @Override
+  @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         //get selected items
@@ -81,7 +76,7 @@ public class Dashboard extends ListActivity {
         }
     }
 
-    public void signOut(){
+    void signOut(){
         SharedPreferences sharedpreferences = getSharedPreferences
                 (SignInActivity.mylogin, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -90,7 +85,7 @@ public class Dashboard extends ListActivity {
         moveTaskToBack(true);
         Dashboard.this.finish();
     }
-    public void exitToHome(){
+    void exitToHome(){
         moveTaskToBack(true);
         Dashboard.this.finish();
     }

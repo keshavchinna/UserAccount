@@ -26,19 +26,17 @@ import java.util.Calendar;
  */
 public class ShowDetails extends Activity {
 
-    TextView outputText;
-    ListView lViewSMS ;
-    ArrayList<String> contactList;
-    StringBuffer contact;
-    StringBuffer msgs;
-    StringBuffer emails;
+    private ListView lViewSMS ;
+    private ArrayList<String> contactList;
+    private StringBuffer contact;
+    private StringBuffer msgs;
+    private StringBuffer emails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
         setContentView(R.layout.show_details);
          lViewSMS = (ListView) findViewById(R.id.listViewSMS);
-        outputText=(TextView)findViewById(R.id.showDetails);
          Log.d("Test","welcome");
         contact=new StringBuffer();
         msgs=new StringBuffer();
@@ -69,9 +67,9 @@ public class ShowDetails extends Activity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         //To change body of implemented methods use File | Settings | File Templates.
-                    Toast toast=Toast.makeText(getApplicationContext(), "Hello welcome", Toast.LENGTH_LONG);
+                    /*Toast toast=Toast.makeText(getApplicationContext(), "Hello welcome", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER_HORIZONTAL, 40, 30);
-                        toast.show();
+                        toast.show();*/
                      }
                 });
                 //outputText.setText(contact);
@@ -95,7 +93,13 @@ public class ShowDetails extends Activity {
                 Log.d("Test","listadapter is added");
             }else
                 Toast.makeText(getApplicationContext(),"No Messages Exist",Toast.LENGTH_LONG).show();
+              lViewSMS.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                  @Override
+                  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                      //To change body of implemented methods use File | Settings | File Templates.
 
+                  }
+              });
             Log.d("Test","outside fetchbox()");
             Log.d("Test", "BufferSize: " + msgs.length());
             //outputText.setText(msgs);
@@ -123,7 +127,7 @@ public class ShowDetails extends Activity {
         }
     }
 
-    public void signOut(){
+     void signOut(){
         SharedPreferences sharedpreferences = getSharedPreferences
                 (SignInActivity.mylogin, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -132,7 +136,7 @@ public class ShowDetails extends Activity {
         moveTaskToBack(true);
         ShowDetails.this.finish();
     }
-    public void exitToHome(){
+     void exitToHome(){
         moveTaskToBack(true);
         ShowDetails.this.finish();
     }
@@ -153,35 +157,41 @@ public class ShowDetails extends Activity {
 
          return resultSet;
     }
-    public void getEmails() {
 
-
-    }
 
      ArrayList getMessagesFromInbox()
         {
         ArrayList sms = new ArrayList();
 
         Uri uriSms = Uri.parse("content://sms/inbox");
-        Cursor cursor = getContentResolver().query(uriSms, new String[]{"_id", "address", "date", "body"},null,null,null);
+        Cursor cursor = getContentResolver().query(uriSms, new String[]{"_id", "address", "date", "body","type"," service_center","person"},null,null,null);
 
         cursor.moveToFirst();
         while  (cursor.moveToNext())
         {
+            String id=cursor.getString(0);
             String address = cursor.getString(1);
             String body = cursor.getString(3);
             String msgDate=convertDate(cursor.getString(2));
-            Log.d("MSG", address);
-            Log.d("MSG",body);
+            String type=cursor.getString(4);
+            String serviceCenter=cursor.getString(5);
+            String person=cursor.getString(6);
+
+            Log.d("MSG","ID: "+id);
+            Log.d("MSG", "address: "+address);
+            Log.d("MSG","body"+body);
+            Log.d("MSG","Type: "+type);
+            Log.d("MSG","serviceCenter: "+serviceCenter);
+            Log.d("MSG","person: "+person);
+
             msgs.append("From: ").append(address).append("\n").append("Date: ").append(msgDate).append("\n").append("Body: ").append("\n").append(body).append("\n").append("-------------------").append("\n");
-            /*System.out.println("======&gt; Mobile number =&gt; "+address);
-            System.out.println("=====&gt; SMS Text =&gt; "+body);*/
+
             sms.add("From: " + address + "\nDate: " + msgDate+"\nBody: \n"+body);
         }
         return sms;
 
     }
-    public ArrayList<String> getNameEmailDetails(){
+     ArrayList<String> getNameEmailDetails(){
         ArrayList<String> names = new ArrayList<String>();
         ContentResolver cr = getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,null, null, null, null);
@@ -211,7 +221,7 @@ public class ShowDetails extends Activity {
 
     String convertDate(String date)
     {
-        String dateMilliSeconds =date;
+
         DateFormat formatter = new SimpleDateFormat("EEEE, MMM dd, yyyy HH:mm:ss a");
         long milliSeconds= Long.parseLong(date);
          Calendar calendar = Calendar.getInstance();

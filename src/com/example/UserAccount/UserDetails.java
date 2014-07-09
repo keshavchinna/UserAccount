@@ -7,7 +7,7 @@ package com.example.UserAccount;
  * Time: 12:15 PM
  * To change this template use File | Settings | File Templates.
  */
-public class UserDetails {
+class UserDetails {
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -17,16 +17,6 @@ public class UserDetails {
     private String question;
     private String answer;
     UserDetails(){
-
-    }
-    UserDetails(String firstName, String lastName, String phoneNumber, String email, String password, String question, String answer){
-        firstName=this.firstName;
-        lastName=this.lastName;
-        phoneNumber=this.phoneNumber;
-        email=this.email;
-        password=this.password;
-        question=this.question;
-        answer=this.question;
 
     }
 

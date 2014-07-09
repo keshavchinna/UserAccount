@@ -8,14 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ImageListAdapter extends ArrayAdapter<String> {
+class ImageListAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] values;
 
-    public ImageListAdapter(Context context, String[] values) {
-        super(context, R.layout.dashboard, values);
+    public ImageListAdapter(Context context) {
+        super(context, R.layout.dashboard, Dashboard.features);
         this.context = context;
-        this.values = values;
+        this.values = Dashboard.features;
     }
 
     @Override

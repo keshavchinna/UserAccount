@@ -20,12 +20,12 @@ import com.google.gson.Gson;
  */
 public class ForgotPassword extends Activity {
 
-    SharedPreferences preference;
-    String mobile, question, answer, password,json,emailID;
-    public final String myPreference = "Myprefer";
-    UserDetails userDetails;
-    EditText email;
-    TextView mobileErrorMessage;
+    private SharedPreferences preference;
+    private String json,emailID;
+    private final String myPreference = "Myprefer";
+    private UserDetails userDetails;
+    private EditText email;
+    private TextView mobileErrorMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.

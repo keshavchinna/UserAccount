@@ -20,13 +20,13 @@ import com.google.gson.Gson;
  */
 public class SignUpActivity extends Activity {
 
-    public final String myPreference = "Myprefer";
-    SharedPreferences  preference  ;
-    SharedPreferences.Editor preferenceEditor ;
-    EditText firstName, lastName, emailId, mobileNumber, password, confirmPassword, securityQuestion;
-    Spinner questionAnswer;
-    UserDetails userDetails;
-    String  json;
+    private final String myPreference = "Myprefer";
+    private SharedPreferences  preference  ;
+    private SharedPreferences.Editor preferenceEditor ;
+    private EditText firstName, lastName, emailId, mobileNumber, password, confirmPassword, securityQuestion;
+    private Spinner questionAnswer;
+    private UserDetails userDetails;
+    private String  json;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);    //To change body of overridden methods use File | Settings | File Templates.
@@ -42,8 +42,7 @@ public class SignUpActivity extends Activity {
         questionAnswer = (Spinner) findViewById(R.id.chooseAnswer);
         preference = getSharedPreferences(myPreference, MODE_PRIVATE);
     }
-
-    public void singnUp(View view) {
+    public void singnUp(View v) {
         String fName = firstName.getText().toString();
         String lName = lastName.getText().toString();
         String email = emailId.getText().toString();
@@ -121,7 +120,7 @@ public class SignUpActivity extends Activity {
             boolean flag = preferenceEditor.commit();
             Log.d("Test","sharedpreference committed");
             Toast.makeText(getApplicationContext(), "Successfully account created", Toast.LENGTH_SHORT).show();
-            if (flag == true)
+            if (flag)
                 startActivity(new Intent(this, SignInActivity.class));
         } else {
             confirmPassword.setHint("Confirm Password Must match");
